@@ -5,7 +5,7 @@ from collections import deque
 
 #default called trackbar function 
 def setValues(x):
-   print("")
+   print("",end="")
 
 
 # Creating the trackbars needed for adjusting the marker colour
@@ -164,9 +164,9 @@ def vss():
                     cv2.line(paintWindow, points[i][j][k - 1], points[i][j][k], colors[i], 2)
 
         # Show all the windows
-        #cv2.imshow("Tracking", frame)
+        cv2.imshow("Tracking", frame)
         cv2.imshow("Paint", paintWindow)
-        #cv2.imshow("mask",Mask)
+        cv2.imshow("mask",Mask)
 
         # If the 'q' key is pressed then stop the application 
         if cv2.waitKey(1) & 0xFF == ord("q"):

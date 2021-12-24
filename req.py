@@ -1,8 +1,16 @@
 import numpy as np
 import cv2
+import warnings
 from PIL import Image, ImageTk
-import tkinter as tk
+from tkinter import *
+from tkinter.ttk import *
+import argparse
+import datetime
+import cv2
+import os
 from collections import deque
+
+warnings.filterwarnings("ignore")
 
 def setValues(x):
      print("")
@@ -52,8 +60,8 @@ def vss():
 
 
      # Loading the default webcam of PC.
-     cap = cv2.VideoCapture(0)
-
+     cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+     
      # Keep looping
      while True:
           # Reading the frame from the camera
@@ -160,21 +168,21 @@ def vss():
                          cv2.line(frame, points[i][j][k - 1], points[i][j][k], colors[i], 2)
                          cv2.line(paintWindow, points[i][j][k - 1], points[i][j][k], colors[i], 2)
                
+          cv2.imshow("Tracking", frame)
           cv2.imshow("Paint", paintWindow)
+          cv2.imshow("mask",Mask)
           if cv2.waitKey(1) & 0xFF == ord("q"):
                break
      cap.release()
      cv2.destroyAllWindows()
 
-
-
-root = tk.Tk()
+root = Tk()
 root.resizable(False,False)
-root.geometry('600x200')
-root.title('This is my Legacy')
-btn1 = tk.Button(root,text="Start",width=15,command= lambda :vss()).place(x=27,y=30)
-btn2 = tk.Button(root,text="Stop",width=15,command= lambda : cv2.destroyAllWindows()).place(x=137,y=30)
-btn3 = tk.Button(root,text="Undo",width=15,command= lambda :upload(z)).place(x=247,y=30)
-btn4 = tk.Button(root,text="Redo",width=15,command= lambda :upload(z)).place(x=357,y=30)
-btn5 = tk.Button(root,text="Photo",width=15,command= lambda :upload(z)).place(x=467,y=30)
+root.geometry('500x200')
+root.title('Air Writing')
+btn1 = Button(root,text="Start",width=20,command= lambda : vss()).place(x=27,y=30)
+btn3 = Button(root,text="Undo",width=20,command= lambda :cv2.destroyAllWindows()).place(x=327,y=30)
+btn4 = Button(root,text="Redo",width=20,command= lambda :cv2.destroyAllWindows()).place(x=27,y=100)
+btn5 = Button(root,text="Photo",width=20,command= lambda :cv2.destroyAllWindows()).place(x=177,y=100)
+btn6 = Button(root,text="Exit",width=20,command= lambda :root.destroy()).place(x=327,y=100)
 root.mainloop()
