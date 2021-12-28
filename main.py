@@ -245,7 +245,6 @@ class Application:
         ttk.Label(rooth,text="4 . click on clear all to clear all your work \npresent on the screen",font=("Consolas",10)).place(x=20,y=230)
         ttk.Label(rooth,text="5 . You can take a screenshot of your work\n if necessary.",font=("Consolas",10)).place(x=20,y=280)
         ttk.Label(rooth,text="6 . For further details contact \n   1 . 18311A0554@sreenidhi.edu.in  \n   2 . 18311A0519@sreenidhi.edu.in  \n   3 . 18311A0532@sreenidhi.edu.in  \n",font=("Consolas",10)).place(x=20,y=330)
-
         rooth.mainloop()
 
     def destroy(self):
