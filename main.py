@@ -2,7 +2,6 @@ from PIL import Image, ImageTk
 from tkinter import messagebox as tk1
 import tkinter as tk
 import tkinter.ttk as ttk
-import argparse
 import datetime
 from collections import deque
 import numpy as np
@@ -218,6 +217,11 @@ class Application:
         self.panel.config(image=imgtk)
 
         self.root.after(10, self.video_loop)
+
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            cv2.destroyAllWindows()
+            self.vs.release()
+            self.root.destroy()
 
     def take_snapshot(self):
         ts = datetime.datetime.now()
