@@ -51,7 +51,7 @@ class Application:
 
         self.root = tk.Tk()
         self.root.title("Computer Vision Writing")
-        self.root.protocol('WM_DELETE_WINDOW', self.des)
+        self.root.protocol('WM_DELETE_WINDOW', self.destroy)
 
         self.panel = ttk.Label(self.root)
         self.panel.pack(padx=10, pady=10)
@@ -59,7 +59,7 @@ class Application:
         btn = ttk.Button(self.root, text="Screenshot", command=self.take_snapshot)
         btn1 = ttk.Button(self.root, text="Start", command=self.video_loop)
         btn2 = ttk.Button(self.root, text="Help", command= self.help_desk)
-        btn5 = ttk.Button(self.root, text="Quit", command=self.des)
+        btn5 = ttk.Button(self.root, text="Quit", command=self.destroy)
         
         btn1.pack(side = "left", expand = True, fill = "both")
         btn.pack(side = "left", expand = True, fill = "both")
@@ -71,7 +71,7 @@ class Application:
         imgtk = ImageTk.PhotoImage(image=self.current_image)
         self.panel.imgtk = imgtk
         self.panel.config(image=imgtk)
-        self.vs = cv2.VideoCapture(0)
+        self.vs = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 
 
     def video_loop(self):
@@ -219,9 +219,7 @@ class Application:
         self.root.after(10, self.video_loop)
 
         if cv2.waitKey(1) & 0xFF == ord("q"):
-            cv2.destroyAllWindows()
-            self.vs.release()
-            self.root.destroy()
+            self.destroy()
 
     def take_snapshot(self):
         ts = datetime.datetime.now()
@@ -250,7 +248,7 @@ class Application:
 
         rooth.mainloop()
 
-    def des(self):
+    def destroy(self):
         cv2.destroyAllWindows()
         self.vs.release()
         self.root.destroy()
