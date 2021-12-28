@@ -113,7 +113,7 @@ class Application:
             M = cv2.moments(cnt)
             center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
 
-            if center[1] <= 65:
+            if center[1] <= 40:
                 if 105<= center[0] <=175: #undo
                     if len(self.undopoints)>0:
                         nice=self.undopoints.pop()
