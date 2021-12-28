@@ -226,7 +226,7 @@ class Application:
         k = self.current_image.convert('RGB')
         k.save(p, "JPEG")
         print("[INFO] saved {}".format(filename))
-        tk1.showinfo("Sucessful","The Image uploaded Sucessfully")
+        tk1.showinfo("Sucessful","Screenshot saved Sucessfully")
 
     def setValues(self,x):
         print("",end="")
