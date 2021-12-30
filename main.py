@@ -16,6 +16,7 @@ class Application:
         self.gpoints = [deque(maxlen=1024)]
         self.rpoints = [deque(maxlen=1024)]
         self.ypoints = [deque(maxlen=1024)]
+        self.setValues = lambda x: print("")
 
         self.blue_index = 0
         self.green_index = 0
@@ -229,9 +230,6 @@ class Application:
         k.save(p, "JPEG")
         print("[INFO] saved {}".format(filename))
         tk1.showinfo("Sucessful","Screenshot saved Sucessfully")
-
-    def setValues(self,x):
-        print("",end="")
     
     def help_desk(self):
         rooth = tk.Tk()
